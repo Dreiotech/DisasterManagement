@@ -1,24 +1,27 @@
 package com.kimm.dreioprojectone.ui.theme.screens.Login
 
-import android.graphics.drawable.Icon
-import android.os.Build
-import androidx.annotation.RequiresApi
+
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,12 +35,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
-i
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.w3c.dom.Text as Text
 
-@RequiresApi(Build.VERSION_CODES.M)
+
+
 @Composable
 fun LoginScreen() {
 
@@ -68,6 +73,31 @@ fun LoginScreen() {
             fontFamily = FontFamily.SansSerif
         )
         Spacer(modifier = Modifier.height(50.dp))
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "name"
+                )
+            },
+            label = {
+                Text(
+                    text = " Full Name ",
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Black
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+                .background(Color.White),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+            keyboardActions = KeyboardActions()
+        )
+        Spacer(modifier = Modifier.height(30.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -118,10 +148,49 @@ fun LoginScreen() {
             keyboardActions = KeyboardActions()
         )
         Spacer(modifier = Modifier.height(30.dp))
+        Row {
+            Text(text = "Remember me",
+                color = Color.DarkGray,
+                textAlign = TextAlign.Right
+            )
+            Spacer(modifier = Modifier.width(150.dp))
+            Text(text = "Forgot password?",
+                color = Color.White
+            )
+        }
+        Spacer(modifier = Modifier.height(50.dp))
 
+        Button(onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Login",
+                fontSize = 25.sp)
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Row {
+            Text(text = "Don't have an account?",
+                color = Color.DarkGray
+            )
+            Spacer(modifier = Modifier.width(20.dp))
 
-
+            Text(text = "Sign up",
+                color = Color.White,
+            )
+        }
     }
+}
 
-    }
+@Preview
+@Composable
+private fun Loginprev() {
+    LoginScreen()
+
+}
+
+
+
+
+
+
 
