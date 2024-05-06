@@ -1,79 +1,86 @@
 package com.kimm.dreioprojectone.ui.theme.screens.Home
 
-
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-
-
-
-
+import android.health.connect.datatypes.ExerciseRoute
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.graphics.vector.ImageVector
 
 
 @Composable
-fun BottomNavigationBar(navController: NavController) {
+fun HomeScreen(
+    currentRoute: String,
+    onItemClick:(String)-> Unit
+) {
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.Favorites,
-        BottomNavItem.Profile
+        BottomNavItem("Home",Icons.Default.Home),
+        BottomNavItem("Updates",Icons.Default.Warning),
+        BottomNavItem("Solutions",Icons.Default.CheckCircle),
+        BottomNavItem("Help",Icons.Default.Info)
+
     )
-
-    BottomNavigation(
-        backgroundColor = MaterialTheme.colors.primary,
-        modifier = androidx.compose.ui.Modifier.fillMaxSize()
-    ) {
-        val currentRoute = navController.currentDestination?.route
-        items.forEach { item ->
+    BottomNavigation{
+        items.forEach {item ->
             BottomNavigationItem(
-                icon = { item.icon },
-                label = { item.label },
+                icon =
+                { Icon(item.icon, contentDescription = item.title )},
+                label = {Text(item.title)},
                 selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                }
+                onClick = {onItemClick(item.route)}
             )
+
         }
     }
 }
+data class BottomNavItem(val title:
+String,val icon : ImageVector , val route: String)
 
-sealed class BottomNavItem(val route: String, val label: @Composable () -> Unit, val icon: @Composable () -> Unit) {
-    object Home : BottomNavItem("home", { Text("Home") }, { Icon(Icons.Filled.Home, contentDescription = "Home") })
-    object Favorites : BottomNavItem("favorites", { Text("Favorites") }, { Icon(Icons.Filled.Favorite, contentDescription = "Favorites") })
-    object Profile : BottomNavItem("profile", { Text("Profile") }, { Icon(Icons.Filled.Person, contentDescription = "Profile") })
-}
-
-@Preview
 @Composable
-fun BottomNavigationBarPreview() {
-    Surface(color = Color.White) {
-        val navController = rememberNavController()
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            BottomNavigationBar(navController)
-        }
+fun MainScreen() {
+    var currentRoute by remember {
+        mutableStateOf("home")
     }
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text("DREIO APP") })
+        },
+        bottomBar = {
+            HomeScreen(currentRoute = currentRoute) { route ->
+                currentRoute = route
+            }
+        },
+        content = {padding ->
+            when (currentRoute){
+                "Home" ->
+                    HomeScreen(Modifier.padding(padding))
+                    "Updates" ->
+                        UpdateScreen(Modifier.padding(padding))
+                "Solutions" ->
+                    SolutionScreen(Modifier.padding(padding))
+                "Help" ->
+                    HelpScreen(Modifier.padding(padding))
+            }
+        }
+    )
 }
+
+
+
 
 
 

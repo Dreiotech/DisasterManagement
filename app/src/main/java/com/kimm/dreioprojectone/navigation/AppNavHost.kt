@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kimm.dreioprojectone.ui.theme.screens.Home.HomeScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Login.LoginScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Register.RegisterScreen
 import com.kimm.dreioprojectone.ui.theme.screens.splash.SplashScreen
@@ -26,6 +27,11 @@ fun AppNavHost(modifier: Modifier=Modifier,
         }
         composable(ROUTE_SPLASH){
             SplashScreen(navController)
+        }
+        composable(ROUTE_HOME){
+            HomeScreen(currentRoute = currentRoute)
+
+            }
         }
     }
 

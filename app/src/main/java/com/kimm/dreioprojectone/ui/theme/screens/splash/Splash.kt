@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.kimm.dreioprojectone.R
+import com.kimm.dreioprojectone.navigation.ROUTE_HOME
 import com.kimm.dreioprojectone.navigation.ROUTE_LOGIN
 import kotlinx.coroutines.delay
 
@@ -35,7 +36,7 @@ fun SplashScreen(navController: NavHostController) {
                 })
         )
         delay(3000L)
-        navController.navigate(ROUTE_LOGIN)
+        navController.navigate(ROUTE_HOME)
     }
 
     // Image
