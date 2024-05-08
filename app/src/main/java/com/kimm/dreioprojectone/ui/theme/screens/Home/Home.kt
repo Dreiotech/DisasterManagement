@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -105,7 +106,8 @@ fun HomeScreen () {
         val selectedIcon: ImageVector,
         val unselectedIcon: ImageVector,
         val hasBadge: Boolean,
-        val messages: Int
+        val messages: Int,
+
     )
     val items = listOf(
         NavItemState(
@@ -113,28 +115,32 @@ fun HomeScreen () {
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
             hasBadge = false,
-            messages = 0
+            messages = 0,
+
         ),
         NavItemState(
             title = "Solution",
             selectedIcon = Icons.Filled.CheckCircle,
             unselectedIcon = Icons.Outlined.CheckCircle,
             hasBadge = false,
-            messages = 0
+            messages = 0,
+
         ),
         NavItemState(
             title = "Help",
             selectedIcon = Icons.Filled.Info,
             unselectedIcon = Icons.Outlined.Info,
             hasBadge = false,
-            messages = 0
+            messages = 0,
+
         ),
         NavItemState(
             title = "Updates",
         selectedIcon = Icons.Filled.Warning,
         unselectedIcon = Icons.Outlined.Warning,
         hasBadge = false,
-        messages = 0
+        messages = 0,
+
     )
     )
     var bottomNavState by rememberSaveable {

@@ -26,9 +26,12 @@ fun HelpScreen () {
                 Text("Safety Tips",
                     style = MaterialTheme.typography.headlineLarge)
                 Text(
-                    "1.Prepare an Emergency Kit"+
+                    "1. Prepare an Emergency Kit "+
+
                     "2.Follow Evacuation Orders"+
+
                     "3.Have a Communication Plan.Once you login to this app you will see our contacts"+
+
                     "4.Be Informed with Official Alerts",
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(8.dp)
