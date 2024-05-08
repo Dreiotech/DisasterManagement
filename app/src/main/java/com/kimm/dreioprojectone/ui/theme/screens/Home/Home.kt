@@ -1,15 +1,24 @@
 package com.kimm.dreioprojectone.ui.theme.screens.Home
 
+import android.inputmethodservice.Keyboard.Row
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.CheckCircle
 
 
@@ -26,6 +35,7 @@ import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -47,15 +57,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kimm.dreioprojectone.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen () {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp)
+            .background(Color.White)
+    ){
+        Card {
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+            ){
+                Image(painter = painterResource(id = R.drawable.fire),
+                    contentDescription ="",
+                    modifier = Modifier
+                        .width(100.dp)
+                        .padding(0.dp)
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Text(text = "WildFire Management", fontSize = 20.sp)
+
+                Spacer(modifier = Modifier.width(15.dp))
+
+                Icon(
+                    imageVector = Icons.Default.ArrowForward,
+                    contentDescription = ""
+                )
+
+
+            }
+        }
+
+    }
     data class NavItemState(
         val title: String,
         val selectedIcon: ImageVector,
@@ -76,20 +120,20 @@ fun HomeScreen () {
             selectedIcon = Icons.Filled.CheckCircle,
             unselectedIcon = Icons.Outlined.CheckCircle,
             hasBadge = false,
-            messages = 12
+            messages = 0
         ),
         NavItemState(
             title = "Help",
             selectedIcon = Icons.Filled.Info,
             unselectedIcon = Icons.Outlined.Info,
-            hasBadge = true,
+            hasBadge = false,
             messages = 0
         ),
         NavItemState(
             title = "Updates",
         selectedIcon = Icons.Filled.Warning,
         unselectedIcon = Icons.Outlined.Warning,
-        hasBadge = true,
+        hasBadge = false,
         messages = 0
     )
     )
@@ -199,7 +243,7 @@ fun HomeScreen () {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun HomePrev() {
     HomeScreen()
