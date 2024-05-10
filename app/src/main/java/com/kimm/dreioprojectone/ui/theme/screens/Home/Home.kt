@@ -161,7 +161,7 @@ fun HomeScreen () {
                     .clip(RoundedCornerShape(20.dp)),
                 navigationIcon = {
                     IconButton(onClick = {  }) {
-                        Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu icon" )
+                        Icon(imageVector = Icons.Default.Warning, contentDescription = "Disaster" )
                     }
 
                 },
