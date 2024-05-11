@@ -40,11 +40,12 @@ import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
 
     var name by remember { mutableStateOf(TextFieldValue("")) }
     var email by remember { mutableStateOf(TextFieldValue("")) }
@@ -61,17 +62,11 @@ fun LoginScreen() {
     ){
         Text(text = "Since you have registered this page.You are required to LogIn.",
             color = Color.Black,
-            fontSize = 30.sp,
-            fontFamily = FontFamily.SansSerif,
+            fontSize = 20.sp,
+            fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold
         )
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            text = "Login to your Account",
-            color = Color.White,
-            fontSize = 20.sp,
-            fontFamily = FontFamily.SansSerif
-        )
+
         Spacer(modifier = Modifier.height(50.dp))
         OutlinedTextField(
             value = name,
@@ -148,43 +143,45 @@ fun LoginScreen() {
             keyboardActions = KeyboardActions()
         )
         Spacer(modifier = Modifier.height(30.dp))
-        Row {
-            Text(text = "Remember me",
-                color = Color.DarkGray,
-                textAlign = TextAlign.Right
-            )
-            Spacer(modifier = Modifier.width(150.dp))
-            Text(text = "Forgot password?",
-                color = Color.White
-            )
-        }
-        Spacer(modifier = Modifier.height(50.dp))
 
-        Button(onClick = { /*TODO*/ },
+
+        Button(onClick = {
+                         navController.navigate("home")
+        },
             modifier = Modifier
                 .fillMaxWidth()
         ) {
             Text(text = "Login",
-                fontSize = 25.sp)
+                fontSize = 15.sp)
         }
         Spacer(modifier = Modifier.height(20.dp))
-        Row {
-            Text(text = "Don't have an account?",
-                color = Color.DarkGray
-            )
-            Spacer(modifier = Modifier.width(20.dp))
-
-            Text(text = "Sign up",
-                color = Color.White,
-            )
+        Button(onClick = {
+                         navController.navigate("register")
+        },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Dont have an Account? Register",
+                fontSize = 15.sp)
         }
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onClick = {
+                         navController.navigate("admin")
+        },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Login as Admin",
+                fontSize = 15.sp)
+        }
+
     }
 }
 
 @Preview
 @Composable
 private fun Loginprev() {
-    LoginScreen()
+    LoginScreen(navController = rememberNavController())
 
 }
 

@@ -7,11 +7,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kimm.dreioprojectone.ui.theme.Disaster.DisasterColumn
 import com.kimm.dreioprojectone.ui.theme.screens.Help.HelpScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Home.HomeScreen
+import com.kimm.dreioprojectone.ui.theme.screens.Login.AdminScreen
 
 import com.kimm.dreioprojectone.ui.theme.screens.Login.LoginScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Register.RegisterScreen
+import com.kimm.dreioprojectone.ui.theme.screens.Solutions.SolutionColumn
+import com.kimm.dreioprojectone.ui.theme.screens.Updates.UpdateScreen
 import com.kimm.dreioprojectone.ui.theme.screens.splash.SplashScreen
 
 @Composable
@@ -22,19 +26,31 @@ fun AppNavHost(modifier: Modifier=Modifier,
         modifier = modifier,
         startDestination = startDestination){
         composable(ROUTE_LOGIN){
-            LoginScreen()
+            LoginScreen(navController)
         }
         composable(ROUTE_REGISTER){
-            RegisterScreen()
+            RegisterScreen(navController)
         }
         composable(ROUTE_SPLASH){
             SplashScreen(navController)
         }
         composable(ROUTE_HOME){
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(ROUTE_HELP){
             HelpScreen()
+        }
+        composable(ROUTE_SOLUTION){
+            SolutionColumn()
+        }
+        composable(ROUTE_ADMIN){
+            AdminScreen()
+        }
+        composable(ROUTE_UPDATES){
+            UpdateScreen()
+        }
+        composable(ROUTE_DISASTER){
+            DisasterColumn()
         }
 
 

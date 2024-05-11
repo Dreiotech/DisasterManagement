@@ -4,12 +4,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -36,163 +40,69 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.kimm.dreioprojectone.R
 
+
+data class SolutionModel(val name:String, val image :Int)
 @Composable
-fun SolutionScreen () {
-    Surface (color = MaterialTheme.colorScheme.background){
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.volunteer) ,
-                contentDescription =" Solution Society" ,
-                Modifier.size(200.dp),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "The Society is recruiting members who want to be volunteers in Disaster Management." +
-                        "Details will be discussed further in this page",
-                color = Color.Black,
-                fontSize = TextUnit.Unspecified,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-
-              )
-        }
-    }
-    Spacer(modifier = Modifier.height(10.dp) )
-
-
-    Surface (color = MaterialTheme.colorScheme.background){
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.floodsolutions) ,
-                contentDescription =" Solution Society" ,
-                Modifier.size(200.dp),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "We introduced this mechanism to establish flood barriers which has helped " +
-                        "to reduce chances of floods in flood striken areas",
-                color = Color.Black,
-                fontSize = TextUnit.Unspecified,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-
-            )
-        }
-    }
-    Spacer(modifier = Modifier.height(10.dp) )
-
-
-
-
-    Surface (color = MaterialTheme.colorScheme.background){
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.fireengine) ,
-                contentDescription =" Solution Society" ,
-                Modifier.size(200.dp),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "Our team has a bunch of fire engines which have helped in" +
-                        "solving rapid wildfire cases rescuing many people from severe injuries ",
-                color = Color.Black,
-                fontSize = TextUnit.Unspecified,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-
-            )
-        }
-    }
-    Spacer(modifier = Modifier.height(10.dp))
-    Surface (color = MaterialTheme.colorScheme.background){
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.dam) ,
-                contentDescription =" Solution Society" ,
-                Modifier.size(200.dp),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = "We have established dams in drought striken areas so" +
-                        "as to increase water supply required for irrigation" +
-                        "which would immersely improve crop production in those" +
-                        "areas",
-                color = Color.Black,
-                fontSize = TextUnit.Unspecified,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-
-            )
-        }
-    }
-    var message by remember { mutableStateOf("") }
-    OutlinedTextField(
-        value = message,
-        onValueChange = { message = it },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "message"
-            )
-        },
-        label = {
-            Text(
-                text = " Send Message regarding our community ",
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black
-            )
-        },
+fun SolutionRow(model: SolutionModel) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
+            .wrapContentHeight()
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .background(Color.White),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-        keyboardActions = KeyboardActions()
-    )
+            .background(Color.Black)
+    ) {
+        Image(
+            painter = painterResource(id = model.image),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(100.dp)
+                .padding(5.dp)
+        )
+        Text(
+            text = model.name,
+            fontSize = 24.sp,
+            fontFamily = FontFamily.Cursive,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White
+        )
+    }
+}
+private val SolutionList = mutableListOf<SolutionModel>().apply {
+    add(SolutionModel("We have recruited volunteer members for our organization",R.drawable.volunteer))
+    add(SolutionModel("We have equipped fire engine so as to help in rapid wildfire cases", R.drawable.fireengine))
+    add(SolutionModel("We have developed this technique so as to help " +
+            " in drought cases to increase food production", R.drawable.dam))
+    add(SolutionModel("We have developed this technique so as to help " +
+       " reduce flood risk in affected areas" , R.drawable.floodsolutions))
+    add(SolutionModel("We have worked together with the NGO's in order to help " +
+            " solve disaster in this nation", R.drawable.ngos))
+    add(SolutionModel("Since our organization is worldwide we have managed to teach most" +
+            " schools in the world about the importance of disaster management", R.drawable.schools))
 }
 
+
+@Composable
+fun SolutionColumn() {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
+        items(SolutionList) { model ->
+            SolutionRow(model = model)
+        }
+    }
+
+}
 
 @Preview
 @Composable
-private fun Solutionprev() {
-    SolutionScreen()
-
+private fun SolutionColumnprev() {
+    SolutionColumn()
 }
-
 
 

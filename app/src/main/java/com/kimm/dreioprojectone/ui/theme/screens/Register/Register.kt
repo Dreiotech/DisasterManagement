@@ -39,12 +39,14 @@ import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navController: NavController) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -62,15 +64,9 @@ fun RegisterScreen() {
         Text(
             text = "Please sign up with us through this registration process",
             color = Color.Black,
-            fontSize = 40.sp,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = "Register Here",
-            color = Color.Black,
             fontSize = 20.sp,
-            fontFamily = FontFamily.SansSerif
+            fontFamily = FontFamily.Cursive,
+            fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -199,13 +195,6 @@ fun RegisterScreen() {
             keyboardActions = KeyboardActions()
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Row {
-            Text(
-                text = "Remember me",
-                color = Color.DarkGray,
-                textAlign = TextAlign.Right
-            )
-            Spacer(modifier = Modifier.width(150.dp))
             Button(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
@@ -215,28 +204,35 @@ fun RegisterScreen() {
                     text = "Register",
                     fontSize = 15.sp
                 )
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-            Row {
-                Text(
-                    text = "Don't have an account?",
-                    color = Color.DarkGray
-                )
-                Spacer(modifier = Modifier.width(20.dp))
 
-                Text(
-                    text = "Sign up",
-                    color = Color.White,
-                )
+
+
+
+            }
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(
+            onClick = {
+                      navController.navigate("Login")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = "Have an account? Login",
+                fontSize = 15.sp
+            )
+
+                }
             }
         }
-    }
-}
+
+
 
 @Preview
 @Composable
 private fun Registerprev() {
-    RegisterScreen()
+    RegisterScreen(navController = rememberNavController())
     
 }
     

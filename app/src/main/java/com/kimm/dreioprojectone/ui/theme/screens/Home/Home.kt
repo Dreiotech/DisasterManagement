@@ -32,6 +32,7 @@ import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Star
 
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Badge
@@ -63,12 +64,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.kimm.dreioprojectone.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen () {
+fun HomeScreen (navController: NavController) {
     Row (
         modifier = Modifier
             .fillMaxWidth()
@@ -160,7 +163,9 @@ fun HomeScreen () {
                     .padding(10.dp)
                     .clip(RoundedCornerShape(20.dp)),
                 navigationIcon = {
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = {
+                        navController.navigate("Disaster")
+                    }) {
                         Icon(imageVector = Icons.Default.Warning, contentDescription = "Disaster" )
                     }
 
@@ -175,10 +180,19 @@ fun HomeScreen () {
                         }
 
                     }
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = {
+                        navController.navigate("Help")
+                    }) {
                         Icon(imageVector = Icons.Outlined.Info, contentDescription = "Help" )
                     }
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = {
+                        navController.navigate("Updates")
+                    }) {
+                        Icon(imageVector = Icons.Outlined.Star, contentDescription = "Updates" )
+                    }
+                    IconButton(onClick = {
+                        navController.navigate("Solution")
+                    }) {
                         Icon(imageVector = Icons.Outlined.CheckCircle, contentDescription = "Solution" )
                     }
                 },
@@ -252,7 +266,7 @@ fun HomeScreen () {
 @Preview
 @Composable
 fun HomePrev() {
-    HomeScreen()
+    HomeScreen(navController = rememberNavController())
 }
 
 

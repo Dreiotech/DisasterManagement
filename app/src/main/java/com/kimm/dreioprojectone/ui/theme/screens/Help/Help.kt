@@ -56,33 +56,7 @@ fun HelpScreen () {
             }
         }
     )
-    Text(text = "Phone number : 0703776762" +
-            "Email Address : Solution@gmail.com")
-    var message by remember { mutableStateOf("") }
-    OutlinedTextField(
-        value = message,
-        onValueChange = { message = it },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "message"
-            )
-        },
-        label = {
-            Text(
-                text = " Search  ",
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black
-            )
-        },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .background(Color.White),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-        keyboardActions = KeyboardActions()
-    )
+   
 }
 
 @Preview
