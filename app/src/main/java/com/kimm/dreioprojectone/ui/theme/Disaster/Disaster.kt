@@ -3,9 +3,11 @@ package com.kimm.dreioprojectone.ui.theme.Disaster
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,14 +39,14 @@ data class DisasterModel(val name:String, val image : Int)
             modifier = Modifier
                 .wrapContentHeight()
                 .fillMaxWidth()
-                .background(Color.Gray)
+                .background(Color.Black)
         ) {
             Image(
                 painter = painterResource(id = model.image),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(150.dp)
                     .padding(5.dp)
             )
             Text(
@@ -57,9 +59,22 @@ data class DisasterModel(val name:String, val image : Int)
         }
     }
     private val DisasterList = mutableListOf<DisasterModel>().apply {
-        add(DisasterModel("Floods",R.drawable.floods))
-        add(DisasterModel("Fire", R.drawable.fire))
-        add(DisasterModel("Drought", R.drawable.drought))
+        add(DisasterModel("Floods have affected a lot of countries in the world" +
+                "which has led to death and destruction of property.Since April" +
+                " Kenya is one of the affected countries",R.drawable.floods))
+        add(DisasterModel("Incidence of Wildfire is increasing mainly through " +
+                "Gas Leaks. This has ever occured in a certain industry" +
+                "in Botswana which claimed a lot of lives.", R.drawable.fire))
+        add(DisasterModel(" This is a major problem in arid areas due to " +
+                "inadequate supply of water.As a Result due to malnutrition" +
+                " it has claimed a lot of lives and most people are staying " +
+                "hungry for weeks.", R.drawable.drought))
+        add(DisasterModel("This cases of Disaster Management" +
+                "has affected the entire world leaving it in sorrows." +
+                "This inspired us to create an app that will show awareness" +
+                "and the solution of the Disasters all over the world."
+            ,R.drawable.world
+                ))
     }
 
 

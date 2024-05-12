@@ -13,6 +13,7 @@ import com.kimm.dreioprojectone.ui.theme.screens.Home.HomeScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Login.AdminScreen
 
 import com.kimm.dreioprojectone.ui.theme.screens.Login.LoginScreen
+import com.kimm.dreioprojectone.ui.theme.screens.Login.ManagementScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Register.RegisterScreen
 import com.kimm.dreioprojectone.ui.theme.screens.Solutions.SolutionColumn
 import com.kimm.dreioprojectone.ui.theme.screens.Updates.UpdateScreen
@@ -51,6 +52,9 @@ fun AppNavHost(modifier: Modifier=Modifier,
         }
         composable(ROUTE_DISASTER){
             DisasterColumn()
+        }
+        composable(ROUTE_MANAGEMENT){
+            ManagementScreen()
         }
 
 

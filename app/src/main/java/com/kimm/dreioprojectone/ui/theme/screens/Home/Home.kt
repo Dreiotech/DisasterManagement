@@ -31,6 +31,7 @@ import androidx.compose.material.icons.outlined.CheckCircle
 
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Star
 
@@ -189,6 +190,11 @@ fun HomeScreen (navController: NavController) {
                         navController.navigate("Updates")
                     }) {
                         Icon(imageVector = Icons.Outlined.Star, contentDescription = "Updates" )
+                    }
+                    IconButton(onClick = {
+                        navController.navigate("Management")
+                    }) {
+                        Icon(imageVector = Icons.Outlined.LocationOn, contentDescription = "Management" )
                     }
                     IconButton(onClick = {
                         navController.navigate("Solution")

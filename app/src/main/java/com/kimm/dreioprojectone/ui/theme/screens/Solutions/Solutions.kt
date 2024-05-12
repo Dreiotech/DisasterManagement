@@ -64,7 +64,7 @@ fun SolutionRow(model: SolutionModel) {
         )
         Text(
             text = model.name,
-            fontSize = 24.sp,
+            fontSize = 23.sp,
             fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.SemiBold,
             color = Color.White
@@ -82,6 +82,11 @@ private val SolutionList = mutableListOf<SolutionModel>().apply {
             " solve disaster in this nation", R.drawable.ngos))
     add(SolutionModel("Since our organization is worldwide we have managed to teach most" +
             " schools in the world about the importance of disaster management", R.drawable.schools))
+    add(SolutionModel("Through an interview in BBC News, we managed to explain to the media how " +
+            "disaster has caused destructions in the world." +
+            "we explained the importance of our app" +
+            "during this situations" ,R.drawable.disaster)
+    )
 }
 
 
