@@ -1,6 +1,6 @@
 package com.kimm.dreioprojectone.ui.theme.screens.Home
 
-import android.inputmethodservice.Keyboard.Row
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 
@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
+
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,7 +25,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Menu
+
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.CheckCircle
 
@@ -115,7 +115,7 @@ fun HomeScreen (navController: NavController) {
     )
     val items = listOf(
         NavItemState(
-            title = "Home",
+            title = "",
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
             hasBadge = false,
@@ -123,7 +123,7 @@ fun HomeScreen (navController: NavController) {
 
         ),
         NavItemState(
-            title = "Solution",
+            title = "",
             selectedIcon = Icons.Filled.CheckCircle,
             unselectedIcon = Icons.Outlined.CheckCircle,
             hasBadge = false,
@@ -131,7 +131,7 @@ fun HomeScreen (navController: NavController) {
 
         ),
         NavItemState(
-            title = "Help",
+            title = "",
             selectedIcon = Icons.Filled.Info,
             unselectedIcon = Icons.Outlined.Info,
             hasBadge = false,
@@ -139,7 +139,7 @@ fun HomeScreen (navController: NavController) {
 
         ),
         NavItemState(
-            title = "Updates",
+            title = "",
         selectedIcon = Icons.Filled.Warning,
         unselectedIcon = Icons.Outlined.Warning,
         hasBadge = false,
@@ -156,7 +156,7 @@ fun HomeScreen (navController: NavController) {
                 title = {
                     Box(Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center) {
-                        Text(text = "Disaster Management", fontWeight = FontWeight.Bold)
+                        Text(text = "DREIO", fontWeight = FontWeight.Bold)
                     }
 
                 },
@@ -203,7 +203,7 @@ fun HomeScreen (navController: NavController) {
                     }
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color(0xFFE0A9A5)
+                    containerColor = Color.Green
                 )
             )
         },
@@ -212,7 +212,7 @@ fun HomeScreen (navController: NavController) {
                 Modifier
                     .padding(10.dp)
                     .clip(RoundedCornerShape(20.dp)),
-                containerColor = Color(0xFFE0A9A5)
+                containerColor = Color.Red
             ) {
                 items.forEachIndexed { index, item ->
 
@@ -238,9 +238,9 @@ fun HomeScreen (navController: NavController) {
                         },
                         label = { Text(text = item.title) },
                         colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color(0xFF552A27),
-                            selectedTextColor = Color(0xFF63332F),
-                            indicatorColor = Color(0xFFBB7E7A)
+
+                            selectedTextColor = Color.Cyan,
+
                         )
                     )
                 }
@@ -249,7 +249,7 @@ fun HomeScreen (navController: NavController) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { },
-                containerColor = Color(0xFFFF9800),
+                containerColor = Color.LightGray,
                 shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp, bottomStart = 30.dp)
             ) {
                 Icon(imageVector = Icons.Filled.Add, contentDescription = "add")

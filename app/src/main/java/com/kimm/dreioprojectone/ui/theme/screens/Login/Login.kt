@@ -49,7 +49,7 @@ fun LoginScreen(navController: NavController) {
 
     var name by remember { mutableStateOf(TextFieldValue("")) }
     var email by remember { mutableStateOf(TextFieldValue("")) }
-    var password by remember { mutableStateOf(TextFieldValue("")) }
+    var pass by remember { mutableStateOf(TextFieldValue("")) }
     var context = LocalContext.current
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -119,8 +119,8 @@ fun LoginScreen(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(30.dp))
         OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
+            value = pass,
+            onValueChange = { pass = it },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
